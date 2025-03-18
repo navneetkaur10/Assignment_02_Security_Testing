@@ -1,0 +1,19 @@
+name: Bandit Security Scan
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  bandit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Run Bandit
+        uses: tj-actions/bandit@v2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          path: "./"
