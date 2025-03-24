@@ -1,0 +1,29 @@
+name: AppScan CodeSweep Scan
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+      
+      - name: Install AppScan CodeSweep
+        run: |
+          curl -sSL https://github.com/IBM/appscan-codesweep/releases/download/latest/AppScan_CodeSweep-<version>-linux-x86_64.tar.gz | tar -xz
+          sudo mv AppScan_CodeSweep-<version>/bin/* /usr/local/bin/
+      
+      - name: Run AppScan CodeSweep
+        run: appscan-codesweep --path ./ --output ./codesweep-results
