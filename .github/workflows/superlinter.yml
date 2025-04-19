@@ -1,3 +1,4 @@
+---
 name: Super-Linter
 
 on:
@@ -18,3 +19,7 @@ jobs:
         env:
           VALIDATE_PYTHON: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    permissions:
+      contents: read
+      statuses: write
