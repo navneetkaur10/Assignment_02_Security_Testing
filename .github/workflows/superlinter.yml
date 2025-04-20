@@ -1,9 +1,12 @@
----
 name: Super-Linter
 
 on:
   push:
   pull_request:
+
+permissions:
+  contents: read
+  statuses: write
 
 jobs:
   lint:
@@ -19,7 +22,3 @@ jobs:
         env:
           VALIDATE_PYTHON: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    permissions:
-      contents: read
-      statuses: write
