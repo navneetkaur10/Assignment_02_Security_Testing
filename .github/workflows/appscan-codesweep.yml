@@ -4,7 +4,7 @@ on:
     types: [opened, synchronize]
 permissions:
   contents: read
-  id-token: write        # ensures the action can annotate your PR
+  id-token: write       
 jobs:
   scan:
     runs-on: ubuntu-latest
